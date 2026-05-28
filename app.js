@@ -22,7 +22,6 @@ app.post('/api/contact', (req, res) => {
   console.log(`Name: ${name}`);
   console.log(`Email: ${email}`);
   console.log(`Message: ${message}`);
-  console.log(`Received at: ${new Date().toISOString()}`);
 
   return res.json({
     status: 'success',
