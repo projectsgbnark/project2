@@ -27,6 +27,17 @@ jobs:
         if: false
         run: npm test
 
+      - name: Validate EC2 SSH key secret
+        run: |
+          if [ -z "${{ secrets.EC2_SSH_KEY }}" ]; then
+            echo "ERROR: EC2_SSH_KEY secret is empty or not set."
+            exit 1
+          fi
+          echo "${{ secrets.EC2_SSH_KEY }}" | grep -q "BEGIN \(RSA\|OPENSSH\|DSA\|EC\) PRIVATE KEY" || {
+            echo "ERROR: EC2_SSH_KEY secret does not contain a valid private key header."
+            exit 1
+          }
+
       - name: Deploy to EC2 via SSH
         uses: appleboy/ssh-action@v0.1.7
         with:

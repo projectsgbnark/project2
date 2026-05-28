@@ -53,6 +53,28 @@ Add these repository secrets in GitHub:
 - `EC2_SSH_KEY` - private SSH key for the deploy user
 - `EC2_PORT` - SSH port (usually `22`)
 
+### How to set `EC2_SSH_KEY`
+
+The `EC2_SSH_KEY` secret must contain the entire private key, including the `BEGIN` and `END` lines. Example:
+
+```text
+-----BEGIN OPENSSH PRIVATE KEY-----
+...
+-----END OPENSSH PRIVATE KEY-----
+```
+
+If the key is encrypted, also add:
+
+- `EC2_SSH_PASSPHRASE` - passphrase for the private key
+
+Use one of these methods to set the secret:
+
+```bash
+gh secret set EC2_SSH_KEY --body-file ~/.ssh/id_rsa
+```
+
+or paste the full key into the GitHub web UI secret editor.
+
 ## EC2 setup
 
 Make sure your EC2 Ubuntu 22.04 instance is prepared for deployment.
