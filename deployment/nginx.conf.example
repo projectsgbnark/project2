@@ -4,7 +4,8 @@
 server {
   listen 80;
   listen [::]:80;
-  server_name example.com www.example.com;
+  # Use your public IP or domain here. For direct IP access, use the IP address.
+  server_name 13.204.252.198 _;
 
   root /var/www/gee-bee-network-site;
   index index.html;
