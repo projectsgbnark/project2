@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GEE BEE NETWORK PVT LTD</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-mark">GB</span>
+        <div>
+          <h1>GEE BEE NETWORK PVT LTD</h1>
+          <p>Technology solutions that power your growth.</p>
+        </div>
+      </div>
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <h2>Innovative IT services for modern businesses</h2>
+        <p>We build secure, scalable digital experiences for enterprises and startups alike.</p>
+        <a class="btn btn-primary" href="#contact">Get in Touch</a>
+      </div>
+    </section>
+
+    <section class="info-grid container" id="about">
+      <div>
+        <h3>About Us</h3>
+        <p>GEE BEE NETWORK PVT LTD is a trusted partner for digital transformation, offering consultancy, software development, and network solutions with a focus on performance and reliability.</p>
+      </div>
+      <div>
+        <h3>Our Mission</h3>
+        <p>To help organizations thrive by delivering smart, dependable technology services that simplify operations and accelerate growth.</p>
+      </div>
+      <div>
+        <h3>Our Vision</h3>
+        <p>To be the preferred technology partner for businesses seeking innovation, agility, and lasting digital value.</p>
+      </div>
+    </section>
+
+    <section class="services container" id="services">
+      <div class="section-header">
+        <h3>Services</h3>
+        <p>Focused offerings crafted to solve your most pressing business challenges.</p>
+      </div>
+      <div class="service-cards">
+        <article class="service-card">
+          <h4>Web & Mobile Apps</h4>
+          <p>Design and development of responsive, modern applications for web and mobile platforms.</p>
+        </article>
+        <article class="service-card">
+          <h4>IT Consulting</h4>
+          <p>Strategic consulting to align your technology roadmap with business priorities and growth goals.</p>
+        </article>
+        <article class="service-card">
+          <h4>Network Solutions</h4>
+          <p>Reliable networking, security, and infrastructure services to keep your operations connected and safe.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact-section container" id="contact">
+      <div class="contact-info">
+        <h3>Contact Us</h3>
+        <p>Ready to start your next project? Reach out to the GEE BEE NETWORK team for a tailored solution.</p>
+        <ul>
+          <li><strong>Email:</strong> info@geebee-network.com</li>
+          <li><strong>Phone:</strong> +91 12345 67890</li>
+          <li><strong>Address:</strong> 123 Business Park, City, India</li>
+        </ul>
+      </div>
+      <form class="contact-form" action="/api/contact" method="post" onsubmit="return handleFormSubmit(event)">
+        <label>
+          Name
+          <input type="text" name="name" placeholder="Your name" required />
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" placeholder="Your email" required />
+        </label>
+        <label>
+          Message
+          <textarea name="message" rows="5" placeholder="Your message" required></textarea>
+        </label>
+        <button class="btn btn-secondary" type="submit">Send Message</button>
+        <p class="form-status" id="formStatus"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 GEE BEE NETWORK PVT LTD. All rights reserved.</p>
+      <p>Delivering dependable digital solutions with excellence.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
