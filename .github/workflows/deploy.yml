@@ -37,9 +37,10 @@ jobs:
           script: |
             set -e
             echo "Starting deployment on remote host"
-            # Ensure deployment directory exists and is owned by the deploy user
+            # Ensure deployment directory exists and is writable by the deploy user
             DEPLOY_DIR=/var/www/gee-bee-network-site
-            mkdir -p "$DEPLOY_DIR"
+            sudo mkdir -p "$DEPLOY_DIR"
+            sudo chown -R "$USER":"$USER" "$DEPLOY_DIR"
             cd "$DEPLOY_DIR"
 
             # Pull the latest code from the repository
