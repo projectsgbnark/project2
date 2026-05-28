@@ -77,45 +77,6 @@ jobs:
             curl --fail -m 10 http://localhost || { echo "Health check failed"; exit 1; }
 
             echo "Deployment completed successfully"
-              uses: appleboy/ssh-action@v0.1.7
-              with:
-                host: ${{ secrets.EC2_HOST }}
-                username: ${{ secrets.EC2_USER }}
-                port: ${{ secrets.EC2_PORT }}
-                key: ${{ secrets.EC2_SSH_KEY }}
-                script: |
-                  set -e
-                  echo "Starting deployment on remote host"
-                  # Ensure deployment directory exists and is writable by the deploy user
-                  DEPLOY_DIR=/var/www/gee-bee-network-site
-                  sudo mkdir -p "$DEPLOY_DIR"
-                  sudo chown -R "$USER":"$USER" "$DEPLOY_DIR"
-                  cd "$DEPLOY_DIR"
-
-                  # Pull the latest code from the repository
-                  if [ -d .git ]; then
-                    git fetch --all --prune
-                    git reset --hard origin/main
-                  else
-                    git clone git@github.com:${{ github.repository }}.git .
-                    git checkout main
-                  fi
-
-                  # Install production dependencies on the server
-                  npm ci --production
-
-                  # Restart or reload the PM2 process using ecosystem file
-                  pm2 startOrReload ecosystem.config.js --env production
-                  pm2 save
-
-                  # Optionally restart Nginx if configuration changes were deployed
-                  sudo systemctl restart nginx
-
-                  # Verify the application is responding after deployment
-                  curl --fail -m 10 http://localhost || { echo "Health check failed"; exit 1; }
-
-                  echo "Deployment completed successfully"
-
       # Optional rollback example:
       # You can rollback manually by SSHing into the EC2 instance and using git checkout <previous_commit>
       # followed by npm ci --production and pm2 startOrReload ecosystem.config.js --env production.
